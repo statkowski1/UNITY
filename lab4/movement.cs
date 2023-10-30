@@ -13,7 +13,6 @@ public class movement : MonoBehaviour
 
     private void Start()
     {
-        // zakładamy, że komponent CharacterController jest już podpięty pod obiekt
         controller = GetComponent<CharacterController>();
     }
 
