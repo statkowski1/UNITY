@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerStatistics : MonoBehaviour
 {
+    public string typePlayer;
     public Canvas playerCanvas;
     public Slider playerHealthSlider;
     public Text playerHealthText;

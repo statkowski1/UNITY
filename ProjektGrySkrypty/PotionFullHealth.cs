@@ -20,6 +20,7 @@ public class PotionFullHealth : MonoBehaviour
         if(Time.time - timer >= 3.0f)
         {
             info.text = "Menu";
+            timer = 0.0f;
         }
     }
 

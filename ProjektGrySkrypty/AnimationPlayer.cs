@@ -19,15 +19,9 @@ public class AnimationPlayer : MonoBehaviour
         {
             animator.SetBool("IsMoving", true);
         }
-        else if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.Mouse0) && !playerStatistics.defeat)
-        {
-            animator.SetBool("IsMoving", false);
-            animator.SetBool("IsAttackingMoving", true);
-        }
         else
         {
             animator.SetBool("IsMoving", false);
-            animator.SetBool("IsAttackingMoving", false);
         }
 
         if((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.Q)) && !Input.GetKey(KeyCode.Mouse0) && !playerStatistics.defeat)

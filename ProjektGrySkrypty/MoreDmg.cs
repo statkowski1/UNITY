@@ -11,6 +11,8 @@ public class MoreDmg : MonoBehaviour
     public int price;
     public int dmg;
     private float timer = 0.0f;
+    private PlayerAttack playerAttack;
+    PlayerSpawnArrow playerSpawnArrow;
 
     void Start()
     {
@@ -22,18 +24,33 @@ public class MoreDmg : MonoBehaviour
         if (Time.time - timer >= 3.0f)
         {
             info.text = "Menu";
+            timer = 0.0f;
         }
     }
 
     public void GiveMoreDmg()
     {
         PlayerStatistics playerStatistics = Player.GetComponent<PlayerStatistics>();
-        PlayerAttack playerAttack = Player.GetComponentInChildren<PlayerAttack>();
+        if(playerStatistics.typePlayer == "Warrior")
+        {
+            playerAttack = Player.GetComponentInChildren<PlayerAttack>();
+        }
+        else if(playerStatistics.typePlayer == "Archer")
+        {
+            playerSpawnArrow = Player.GetComponent<PlayerSpawnArrow>();
+        }
         if (Button != null)
         {
             if (playerStatistics.money >= price)
             {
-                playerAttack.playerDmg = playerAttack.playerDmg + dmg;
+                if(playerStatistics.typePlayer == "Warrior")
+                {
+                    playerAttack.playerDmg = playerAttack.playerDmg + dmg;
+                }
+                else if (playerStatistics.typePlayer == "Archer")
+                {
+                    playerSpawnArrow.GetComponent<PlayerSpawnArrow>().playerDmg = playerSpawnArrow.GetComponent<PlayerSpawnArrow>().playerDmg + dmg;
+                }
                 playerStatistics.money = playerStatistics.money - price;
                 playerStatistics.playerCoinsText.text = playerStatistics.money.ToString();
                 info.text = "Dokonano zakupu!";
